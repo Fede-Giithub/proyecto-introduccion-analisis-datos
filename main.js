@@ -27,6 +27,7 @@ const inversionTotalTrimestre = (tasapromedio) =>{
 
     return inversionTotalFinal
 }
+
 const inversionTotalPorMes = (tasapromedio) =>{
     const tasaTrimestre=tasapromedio/12;
     let contador=0
@@ -43,16 +44,16 @@ const inversionTotalPorMes = (tasapromedio) =>{
     return inversionTotalFinal
 }
 
+const banco1_Mensual = document.getElementById("banco1-mensual")
 const banco1_Trimestral = document.getElementById("banco1-trimestral")
-const banco1_Cuatrimestral = document.getElementById("banco1-cuatrimestral")
 const banco1_Anual = document.getElementById("banco1-anual")
 
+const banco2_Mensual = document.getElementById("banco2-mensual")
 const banco2_Trimestral = document.getElementById("banco2-trimestral")
-const banco2_Cuatrimestral = document.getElementById("banco2-cuatrimestral")
 const banco2_Anual = document.getElementById("banco2-anual")
 
+const banco3_Mensual = document.getElementById("banco3-mensual")
 const banco3_Trimestral = document.getElementById("banco3-trimestral")
-const banco3_Cuatrimestral = document.getElementById("banco3-cuatrimestral")
 const banco3_Anual = document.getElementById("banco3-anual")
 
 let boton_Calcular = document.getElementById("boton-calcular")
@@ -60,16 +61,16 @@ let boton_Calcular = document.getElementById("boton-calcular")
 boton_Calcular.addEventListener('click', (e) => {
  e.preventDefault()
 
-    const banco1_TasaPromedio = tasaPromedio (parseFloat(banco1_Trimestral.value),
-    parseFloat(banco1_Cuatrimestral.value),
+    const banco1_TasaPromedio = tasaPromedio (parseFloat(banco1_Mensual.value),
+    parseFloat(banco1_Trimestral.value),
     parseFloat(banco1_Anual.value))
 
-    const banco2_TasaPromedio = tasaPromedio (parseFloat(banco2_Trimestral.value),
-    parseFloat(banco2_Cuatrimestral.value),
+    const banco2_TasaPromedio = tasaPromedio (parseFloat(banco2_Mensual.value),
+    parseFloat(banco2_Trimestral.value),
     parseFloat(banco2_Anual.value))
 
-    const banco3_TasaPromedio = tasaPromedio (parseFloat(banco3_Trimestral.value),
-    parseFloat(banco3_Cuatrimestral.value),
+    const banco3_TasaPromedio = tasaPromedio (parseFloat(banco3_Mensual.value),
+    parseFloat(banco3_Trimestral.value),
     parseFloat(banco3_Anual.value))
 
     const banco1_InversionAnioCompleto = inversionAnioCompleto (banco1_TasaPromedio,monto)
