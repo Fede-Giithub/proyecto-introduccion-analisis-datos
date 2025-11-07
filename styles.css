@@ -84,3 +84,7 @@ button:hover {
 #resultado p {
     margin-bottom: 8px;
 }
+
+#mejorOpcion {
+    padding: 20px
+}

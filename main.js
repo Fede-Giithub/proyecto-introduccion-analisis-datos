@@ -2,7 +2,6 @@ const monto=850000
 
 const tasaPromedio = (anio1,anio2,anio3) =>{
     return promedio= (anio1 + anio2+ anio3)/3
-
 }
 
 const inversionAnioCompleto = (tasapromedio,monto) =>{
@@ -85,34 +84,54 @@ boton_Calcular.addEventListener('click', (e) => {
     const banco2_InversionTotalPorMes = inversionTotalPorMes (banco2_TasaPromedio)
     const banco3_InversionTotalPorMes = inversionTotalPorMes (banco3_TasaPromedio)  
 
-    console.log(`Banco 1 - Tasa Promedio: ${banco1_TasaPromedio} % - Inversion Anio Completo: $ ${banco1_InversionAnioCompleto} - Inversion Total Trimestre: $ ${banco1_InversionTotalTrimestre} - Inversion Total Por Mes: $ ${banco1_InversionTotalPorMes}`)
-    console.log(`Banco 2 - Tasa Promedio: ${banco2_TasaPromedio} % - Inversion Anio Completo: $ ${banco2_InversionAnioCompleto} - Inversion Total Trimestre: $ ${banco2_InversionTotalTrimestre} - Inversion Total Por Mes: $ ${banco2_InversionTotalPorMes}`)
-    console.log(`Banco 3 - Tasa Promedio: ${banco3_TasaPromedio} % - Inversion Anio Completo: $ ${banco3_InversionAnioCompleto} - Inversion Total Trimestre: $ ${banco3_InversionTotalTrimestre} - Inversion Total Por Mes: $ ${banco3_InversionTotalPorMes}`)
+    const resultado = document.getElementById("resultado")
 
-    const resultado = document.getElementById("resultado");
-
-resultado.innerHTML = `
+    resultado.innerHTML = `
   <h2>Resultados</h2>
-  <p>Banco 1: 
-  <br>
+  <p>Banco Provincia: 
   Tasa Promedio: ${banco1_TasaPromedio.toFixed(2)}%</p>
-  <p>Inversión Anual: $${banco1_InversionAnioCompleto.toFixed(2)}</p>
-  <p>Inversión Trimestral: $${banco1_InversionTotalTrimestre.toFixed(2)}</p>
   <p>Inversión Mensual: $${banco1_InversionTotalPorMes.toFixed(2)}</p>
-     
-  <p>Banco 2:</p>
+  <p>Inversión Trimestral: $${banco1_InversionTotalTrimestre.toFixed(2)}</p>
+  <p>Inversión Anual: $${banco1_InversionAnioCompleto.toFixed(2)}</p>
   <br>
+     
+  <p>Banco Nación:</p>
   <p>Tasa Promedio: ${banco2_TasaPromedio.toFixed(2)}%</p>
-  <p>Inversión Anual: $${banco2_InversionAnioCompleto.toFixed(2)}</p>
-  <p>Inversión Trimestral: $${banco2_InversionTotalTrimestre.toFixed(2)}</p>
   <p>Inversión Mensual: $${banco2_InversionTotalPorMes.toFixed(2)}</p>
+  <p>Inversión Trimestral: $${banco2_InversionTotalTrimestre.toFixed(2)}</p>
+  <p>Inversión Anual: $${banco2_InversionAnioCompleto.toFixed(2)}</p>
+  <br>
 
-  <p>Banco 3:</p>
+  <p>Banco Hipotecario:</p>
   <br>
   <p>Tasa Promedio: ${banco3_TasaPromedio.toFixed(2)}%</p>
-  <p>Inversión Anual: $${banco3_InversionAnioCompleto.toFixed(2)}</p>
-  <p>Inversión Trimestral: $${banco3_InversionTotalTrimestre.toFixed(2)}</p>
   <p>Inversión Mensual: $${banco3_InversionTotalPorMes.toFixed(2)}</p>
-`;
+  <p>Inversión Trimestral: $${banco3_InversionTotalTrimestre.toFixed(2)}</p>
+  <p>Inversión Anual: $${banco3_InversionAnioCompleto.toFixed(2)}</p>
+`
 
+const resultados = [
+  { banco: "Banco Provincia", tipo: "Anual", monto: banco1_InversionAnioCompleto },
+  { banco: "Banco Provincia", tipo: "Trimestral", monto: banco1_InversionTotalTrimestre },
+  { banco: "Banco Provincia", tipo: "Mensual", monto: banco1_InversionTotalPorMes },
+
+  { banco: "Banco Nación", tipo: "Anual", monto: banco2_InversionAnioCompleto },
+  { banco: "Banco Nación", tipo: "Trimestral", monto: banco2_InversionTotalTrimestre },
+  { banco: "Banco Nación", tipo: "Mensual", monto: banco2_InversionTotalPorMes },
+
+  { banco: "Banco Hipotecario", tipo: "Anual", monto: banco3_InversionAnioCompleto },
+  { banco: "Banco Hipotecario", tipo: "Trimestral", monto: banco3_InversionTotalTrimestre },
+  { banco: "Banco Hipotecario", tipo: "Mensual", monto: banco3_InversionTotalPorMes },
+]
+
+    const mejorInversion = resultados.reduce((max, resultado) => resultado.monto > max.monto ? resultado : max, resultados[0]);
+
+    const mejorOpcion = document.getElementById("mejorOpcion")
+
+    mejorOpcion.innerHTML = `
+  <h2>Mejor Opción de Inversión</h2>
+  <p>Banco: ${mejorInversion.banco}</p>
+  <p>Tipo de Inversión: ${mejorInversion.tipo}</p>
+  <p>Monto Final: $${mejorInversion.monto.toFixed(2)}</p>
+`
 })
